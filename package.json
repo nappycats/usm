@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/nappycats/usm/issues"
   },
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "main": "./dist/usm.cjs",
   "module": "./dist/usm.esm.js",
