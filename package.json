@@ -1,6 +1,6 @@
 {
   "name": "@nappycat/usm",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "USM (Universal State Machine) for games/3D sites with adapters for Three.js, input, and UI.",
   "license": "MIT",
   "author": "stan nesi (NAPPY CAT",
