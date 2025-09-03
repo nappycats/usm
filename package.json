@@ -1,0 +1,55 @@
+{
+  "name": "@nappycat/usm",
+  "version": "1.0.0",
+  "description": "USM (Universal State Machine) for games/3D sites with adapters for Three.js, input, and UI.",
+  "license": "MIT",
+  "author": "nappycat",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/<your-username>/usm.git"
+  },
+  "homepage": "https://github.com/<your-username>/usm#readme",
+  "bugs": {
+    "url": "https://github.com/<your-username>/usm/issues"
+  },
+  "type": "module",
+  "main": "./dist/usm.cjs",
+  "module": "./dist/usm.esm.js",
+  "unpkg": "./dist/usm.umd.min.js",
+  "jsdelivr": "./dist/usm.umd.min.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/usm.esm.js",
+      "require": "./dist/usm.cjs"
+    },
+    "./adapters/*": {
+      "types": "./dist/adapters/*.d.ts",
+      "import": "./dist/adapters/*.js",
+      "require": "./dist/adapters/*.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "echo \"(add eslint later)\"",
+    "format": "echo \"(add prettier later)\"",
+    "test": "echo \"(add vitest later)\"",
+    "prepublishOnly": "npm run clean && npm run build"
+  },
+  "peerDependencies": {
+    "three": ">=0.150.0",
+    "gsap": ">=3.10.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0",
+    "tsup": "^8.0.0",
+    "rimraf": "^6.0.0"
+  }
+}
