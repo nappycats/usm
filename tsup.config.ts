@@ -11,11 +11,13 @@ export default defineConfig({
   entry: {
     'usm': 'src/index.ts',
     'adapters/three': 'src/adapters/three.ts',
+    'adapters/gsap': 'src/adapters/gsap.ts',
     'adapters/keyboard': 'src/adapters/keyboard.ts',
     'adapters/pointer': 'src/adapters/pointer.ts',
     'adapters/ui': 'src/adapters/ui.ts',
     'adapters/fader': 'src/adapters/fader.ts',
-    'adapters/debug': 'src/adapters/debug.ts'
+    'adapters/debug': 'src/adapters/debug.ts',
+    'adapters/loader': 'src/adapters/loader.ts'
   },
   format: ['esm', 'cjs', 'iife'],
   globalName: 'USM',          // window.USM
