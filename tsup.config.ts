@@ -13,7 +13,9 @@ export default defineConfig({
     'adapters/three': 'src/adapters/three.ts',
     'adapters/keyboard': 'src/adapters/keyboard.ts',
     'adapters/pointer': 'src/adapters/pointer.ts',
-    'adapters/ui': 'src/adapters/ui.ts'
+    'adapters/ui': 'src/adapters/ui.ts',
+    'adapters/fader': 'src/adapters/fader.ts',
+    'adapters/debug': 'src/adapters/debug.ts'
   },
   format: ['esm', 'cjs', 'iife'],
   globalName: 'USM',          // window.USM
