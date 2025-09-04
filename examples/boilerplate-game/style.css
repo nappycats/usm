@@ -1,0 +1,4 @@
+html,body,#app{height:100%;margin:0}
+#app canvas{display:block; background-color: #000;}
+#hud{position:fixed;left:0;top:0;right:0;pointer-events:none}
+.hint{margin:12px;color:#fff;font:14px/1.4 monospace;text-align:center}

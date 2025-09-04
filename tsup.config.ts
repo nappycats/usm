@@ -10,7 +10,8 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     'usm': 'src/index.ts',
-    'adapters/three': 'src/adapters/three.ts',
+    'adapters/three':     'src/adapters/three/index.ts', // barrel (exports core + fx)
+    'adapters/three-fx':  'src/adapters/three/fx.ts',    // optional separate file
     'adapters/gsap': 'src/adapters/gsap.ts',
     'adapters/keyboard': 'src/adapters/keyboard.ts',
     'adapters/pointer': 'src/adapters/pointer.ts',
@@ -21,6 +22,11 @@ export default defineConfig({
     'adapters/audio': 'src/adapters/audio.ts',
     'adapters/time': 'src/adapters/time.ts',
     'adapters/picking': 'src/adapters/picking.ts',
+    'adapters/scroll': 'src/adapters/scroll.ts',
+    'adapters/tween': 'src/adapters/tween.ts',
+    'adapters/text': 'src/adapters/text.ts',
+    'adapters/anim': 'src/adapters/anim.ts',
+  // (leave other adapters as they are)
   },
   format: ['esm', 'cjs', 'iife'],
   globalName: 'USM',          // window.USM

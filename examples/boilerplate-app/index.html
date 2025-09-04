@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>USM Boilerplate App</title>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+  <nav>
+    <button data-goto="home">Home</button>
+    <button data-goto="about">About</button>
+    <button data-goto="settings">Settings</button>
+  </nav>
+
+  <main>
+    <section data-show="home"><h1>Home</h1><p id="greet"></p></section>
+    <section data-show="about"><h1>About</h1><p  class="about">USM adapter-first demo.</p></section>
+    <section data-show="settings"><h1>Settings</h1><p class="settings">Press 1/2/3 to switch pages.</p></section>
+  </main>
+
+  <script src="../../dist/usm.global.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>

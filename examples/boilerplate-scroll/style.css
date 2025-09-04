@@ -1,0 +1,6 @@
+*{box-sizing:border-box}
+html,body{margin:0}
+header{position:sticky;top:0;background:#111;color:#fff;padding:12px}
+.panel{height:100vh;display:grid;place-items:center;font:32px system-ui}
+#p1{background:#f9f9f9} #p2{background:#e6f2ff} #p3{background:#fcefe6}
+#progress{position:fixed;right:12px;bottom:12px;background:#000a;color:#fff;padding:6px 10px;border-radius:8px;font:12px monospace}
