@@ -1,0 +1,20 @@
+<!doctype html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22/>">
+  <title>USM demo: loading → menu → play</title>
+</head>
+<style>
+  html,body,#app{height:100%;margin:0}
+  body{background:#0b0f1a;color:#fff;font-family:system-ui}
+  #hud{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none}
+  .hint{opacity:.8;letter-spacing:.08em;text-transform:uppercase}
+</style>
+<div id="app"><div id="hud"><div class="hint">Loading...</div></div></div>
+
+<!-- Three.js & GSAP from CDN (UMD globals) -->
+<script src="https://cdn.jsdelivr.net/npm/three@latest/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="../../dist/usm.global.js?v=dev2"></script>
+<script src="./main.js"></script>   

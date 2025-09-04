@@ -17,7 +17,10 @@ export default defineConfig({
     'adapters/ui': 'src/adapters/ui.ts',
     'adapters/fader': 'src/adapters/fader.ts',
     'adapters/debug': 'src/adapters/debug.ts',
-    'adapters/loader': 'src/adapters/loader.ts'
+    'adapters/loader': 'src/adapters/loader.ts',
+    'adapters/audio': 'src/adapters/audio.ts',
+    'adapters/time': 'src/adapters/time.ts',
+    'adapters/picking': 'src/adapters/picking.ts',
   },
   format: ['esm', 'cjs', 'iife'],
   globalName: 'USM',          // window.USM

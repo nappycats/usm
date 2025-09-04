@@ -158,6 +158,15 @@ export class USM<C = any> {
   /** Whether the machine has been started. */
   get started(): boolean { return this._run; }
 
+  /** Public read-only token that increments on every state ENTER. */
+  get token(): number { return this._token; }
+
+  /**
+   * Check if a previously captured token still matches the current state-entry token.
+   * Use this to ignore late async work (fetches, timers) after a state change.
+   */
+  isCurrent(token: number): boolean { return token === this._token; }
+
   /** Begin the machine: calls onStart hooks and enters the initial state. */
   start(evt: USMEvent = { type: '@START' }): void {
     if (this._run) return;

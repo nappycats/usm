@@ -39,8 +39,12 @@ export function gsapAdapter({ expose = true, pauseOnStop = false }: GsapAdapterO
     }
 
     return {
-      onStart() { if (pauseOnStop) gsap.globalTimeline.play(); },
-      onStop()  { if (pauseOnStop) gsap.globalTimeline.pause(); }
+      onStart() {
+         if (pauseOnStop) gsap.globalTimeline.play();
+      },
+      onStop()  { 
+        if (pauseOnStop) gsap.globalTimeline.pause(); 
+      }
     };
   });
 }

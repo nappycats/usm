@@ -1,0 +1,14 @@
+<script src="https://cdn.jsdelivr.net/npm/three/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap/dist/gsap.min.js"></script>
+<script src="../../dist/usm.global.js"></script>
+<script>
+  console.log('USM adapters available:', window.USM && window.USM.adapters && Object.keys(window.USM.adapters));
+  if (!window.USM || typeof window.USM.adapters?.timeAdapter !== 'function') {
+    console.error('USM global build missing timeAdapter. Run `npm run build` and make sure dist/usm.global.js is up to date.');
+  }
+</script>
+<script>
+  const { USM: Machine, adapters } = window.USM;
+  const m = new Machine({ initial:'menu', states:{ menu:{ on:{ START:'play' } }, play:{} }, adapters:[ adapters.timeAdapter() ] });
+  m.start();
+</script>

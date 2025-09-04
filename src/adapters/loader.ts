@@ -49,7 +49,29 @@ export function loaderAdapter({
     let onError: ((name: string, error: any) => void) | undefined;
 
     // --- helpers -------------------------------------------------------------
-    const withBase = (u: string) => (baseUrl ? new URL(u, baseUrl).toString() : u);
+    // Replace your current withBase helper with this:
+    const withBase = (u: string) => {
+      // Treat '.' or './' as “no base” (let the page location resolve it)
+      const b = (baseUrl === '.' || baseUrl === './') ? '' : baseUrl;
+      if (!b) return u;
+
+      try {
+        // Resolve possibly-relative base against the current document URL
+        const base = new URL(b, (typeof document !== 'undefined' ? document.baseURI : undefined));
+        return new URL(u, base).toString();
+      } catch (e) {
+        // Fallback join for odd environments (e.g., file:// or very old engines)
+        try {
+          const prefix = String(b).replace(/\/+$/, '');
+          const suffix = String(u).replace(/^\/+/, '');
+          return `${prefix}/${suffix}`;
+        } catch {
+          console.warn('loader: invalid baseUrl, falling back to raw URL', b, e);
+          return u;
+        }
+      }
+    };
+    
     const ext = (u: string) => (u.split('?')[0].split('#')[0].split('.').pop() || '').toLowerCase();
 
     // --- built-in loaders ----------------------------------------------------

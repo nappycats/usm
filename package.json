@@ -1,42 +1,45 @@
 {
   "name": "@nappycat/usm",
   "version": "1.2.0",
-  "description": "USM (Universal State Machine) for games/3D sites with adapters for Three.js, input, and UI.",
+  "description": "Universal State Machine for JS/TS games, 3D, and interactive sites. Adapter-first (three.js, GSAP, input, time, audio, picking).",
   "license": "MIT",
-  "author": "stan nesi (NAPPY CAT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nappycats/usm.git"
-  },
+  "author": "stan nesi (NAPPY CAT)",
+  "repository": { "type": "git", "url": "https://github.com/nappycats/usm.git" },
   "homepage": "https://github.com/nappycats/usm#readme",
-  "bugs": {
-    "url": "https://github.com/nappycats/usm/issues"
-  },
-  "publishConfig": {
-    "access": "public"
-  },
+  "bugs": { "url": "https://github.com/nappycats/usm/issues" },
+  "publishConfig": { "access": "public" },
+
   "type": "module",
   "main": "./dist/usm.cjs",
   "module": "./dist/usm.esm.js",
-  "unpkg": "./dist/usm.umd.min.js",
-  "jsdelivr": "./dist/usm.umd.min.js",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/usm.d.ts",
+  "unpkg": "./dist/usm.global.js",
+  "jsdelivr": "./dist/usm.global.js",
+
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/usm.d.ts",
       "import": "./dist/usm.esm.js",
       "require": "./dist/usm.cjs"
     },
     "./adapters/*": {
       "types": "./dist/adapters/*.d.ts",
-      "import": "./dist/adapters/*.js",
+      "import": "./dist/adapters/*.esm.js",
       "require": "./dist/adapters/*.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+
+  "typesVersions": {
+    "*": {
+      "adapters/*": ["dist/adapters/*.d.ts"],
+      "*": ["dist/*.d.ts"]
     }
   },
-  "files": [
-    "dist"
-  ],
+
+  "files": ["dist"],
   "sideEffects": false,
+
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsup",
@@ -46,10 +49,18 @@
     "test": "echo \"(add vitest later)\"",
     "prepublishOnly": "npm run clean && npm run build"
   },
+
   "peerDependencies": {
     "three": ">=0.150.0",
-    "gsap": ">=3.10.0"
+    "gsap": ">=3.12.0"
   },
+  "peerDependenciesMeta": {
+    "three": { "optional": true },
+    "gsap": { "optional": true }
+  },
+
+  "engines": { "node": ">=18" },
+
   "devDependencies": {
     "typescript": "^5.5.0",
     "tsup": "^8.0.0",
