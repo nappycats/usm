@@ -74,7 +74,7 @@ const m = new Machine({
     loading: {
       async enter(ctx, evt, api) {
         setHint('Loading...');
-        await ctx.fader.fadeIn(1.9);
+        // await ctx.fader.fadeIn(1);
 
         ctx.loader.onProgress((d, t) => setHint(`Loading ${d}/${t} (${Math.round((d/t)*100)}%)`));
 
@@ -89,7 +89,8 @@ const m = new Machine({
           // Ensure we always have a pixel
           await ctx.loader.load([{ name: 'pixel', url: DATA_PIXEL, type: 'png' }]);
         }
-        await ctx.fader.fadeOut(1.0);
+        // await ctx.fader.fadeOut(1.0);
+        await ctx.fader.fadeBetween(0.35, 'READY', 0.35);
         api.send('READY');
       },
       on: {

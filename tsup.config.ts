@@ -10,22 +10,29 @@ import { defineConfig } from 'tsup';
 export default defineConfig({
   entry: {
     'usm': 'src/index.ts',
+    'adapters/loader': 'src/adapters/loader.ts',
+
     'adapters/three':     'src/adapters/three/index.ts', // barrel (exports core + fx)
-    'adapters/three-fx':  'src/adapters/three/fx.ts',    // optional separate file
+    // 'adapters/three-fx':  'src/adapters/three/fx.ts',    // optional separate file
+
     'adapters/gsap': 'src/adapters/gsap.ts',
+
+    'adapters/ui': 'src/adapters/ui/index.ts',
+    // 'adapters/ui-widgets': 'src/adapters/ui/widgets.ts',
+
     'adapters/keyboard': 'src/adapters/keyboard.ts',
     'adapters/pointer': 'src/adapters/pointer.ts',
-    'adapters/ui': 'src/adapters/ui.ts',
     'adapters/fader': 'src/adapters/fader.ts',
     'adapters/debug': 'src/adapters/debug.ts',
-    'adapters/loader': 'src/adapters/loader.ts',
     'adapters/audio': 'src/adapters/audio.ts',
     'adapters/time': 'src/adapters/time.ts',
     'adapters/picking': 'src/adapters/picking.ts',
     'adapters/scroll': 'src/adapters/scroll.ts',
     'adapters/tween': 'src/adapters/tween.ts',
     'adapters/text': 'src/adapters/text.ts',
+
     'adapters/anim': 'src/adapters/anim.ts',
+    'adapters/transitions': 'src/adapters/transitions.ts',
   // (leave other adapters as they are)
   },
   format: ['esm', 'cjs', 'iife'],

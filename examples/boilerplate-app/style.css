@@ -10,6 +10,9 @@
 html, body { margin: 0; padding: 0; }
 body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; color: var(--fg); background: var(--bg); }
 
+html[data-nav-left="open"]  .app-nav.left { transform: translateX(0); }
+html[data-nav-left="closed"] .app-nav.left { transform: translateX(-100%); }
+
 nav {
   position: sticky; top: 0;
   display: flex; gap: 8px; padding: 10px 12px;
@@ -42,3 +45,37 @@ p { margin: 0; color: var(--muted); }
   nav { padding: 8px; gap: 6px; }
   button { padding: 7px 10px; }
 }
+
+/* NAVS */
+[data-nav="left"], [data-nav="right"]{
+  position: fixed; top: 0; bottom: 0; width: var(--nav-w, 280px);
+  background: var(--nav-bg, #11151a); color: var(--nav-fg, #eaf2ff);
+  box-shadow: 0 10px 40px rgba(0,0,0,.45);
+  z-index: 8000; will-change: transform; transition: transform .25s ease;
+}
+[data-nav="left"]  { left: 0;  transform: translateX(-100%); }
+[data-nav="right"] { right: 0; transform: translateX(100%); }
+html[data-nav-left="open"]  [data-nav="left"]  { transform: translateX(0%); }
+html[data-nav-right="open"] [data-nav="right"] { transform: translateX(0%); }
+
+/* TOOLBARS */
+[data-toolbar="top"], [data-toolbar="bottom"]{
+  position: fixed; left: 0; right: 0; height: var(--tb-h, 56px);
+  background: var(--tb-bg, #0d1015); color: var(--tb-fg, #e5ecff);
+  box-shadow: 0 6px 30px rgba(0,0,0,.35);
+  z-index: 7000; will-change: transform; transition: transform .25s ease;
+}
+[data-toolbar="top"]    { top: 0;    transform: translateY(-100%); }
+[data-toolbar="bottom"] { bottom: 0; transform: translateY(100%);  }
+html[data-toolbar-top="show"]    [data-toolbar="top"]    { transform: translateY(0%); }
+html[data-toolbar-bottom="show"] [data-toolbar="bottom"] { transform: translateY(0%); }
+
+/* Dialog/backdrop baseline */
+.usm-backdrop{ position:fixed; inset:0; background:rgba(0,0,0,.4);
+  backdrop-filter:blur(2px); opacity:0; pointer-events:none;
+  transition:opacity .18s ease; z-index:10000; }
+.usm-backdrop.show{ opacity:1; pointer-events:auto; }
+.usm-dialog{ position:fixed; max-width:min(600px, 90vw); max-height:80vh; top:50%; left:50%;
+  transform:translate(-50%,-50%) scale(.96); background:#14161b; color:#eef1f6;
+  border:1px solid rgba(255,255,255,.12); border-radius:12px; box-shadow:0 10px 50px rgba(0,0,0,.5);
+  opacity:0; transition:opacity .18s ease, transform .18s ease; z-index:10001; }

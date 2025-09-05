@@ -96,77 +96,9 @@ export function animAdapter(_opts: AnimAdapterOpts = {}) {
       return api;
     }
 
-    // --- scrollTrigger() ------------------------------------------------------------
-    /**
-     * scrollTrigger(config)
-     * If GSAP+ScrollTrigger exist → proxies to ScrollTrigger.create(config).
-     * Else → creates a minimal trigger using IntersectionObserver + (optional) page progress.
-     *
-     * LIMITS of fallback:
-     * - No pinning, scrub, or complex start/end expressions.
-     * - Use `onEnter`/`onLeave` for simple visibility triggers, and `onUpdate(progress)`
-     *   for a 0..1 page scroll progress.
-     */
-    function scrollTrigger(config: {
-      trigger: string | Element,
-      once?: boolean,
-      threshold?: number | number[],
-      onEnter?: (e: IntersectionObserverEntry) => void,
-      onLeave?: (e: IntersectionObserverEntry) => void,
-      onUpdate?: (progress: number) => void, // convenience for simple page progress
-    }) {
-      if (ScrollTrigger && gsap) {
-        // Proxy to GSAP ScrollTrigger if present
-        return ScrollTrigger.create(config as any);
-      }
-
-      // Fallback: IO + simple scroll progress
-      const el = typeof config.trigger === 'string'
-        ? document.querySelector(config.trigger as string)!
-        : (config.trigger as Element);
-      if (!el) {
-        console.warn('[usm][anim] scrollTrigger: trigger element not found', config.trigger);
-        return { kill(){} };
-      }
-
-      const io = new IntersectionObserver((entries) => {
-        const e = entries.find(x => x.target === el);
-        if (!e) return;
-        if (e.isIntersecting) {
-          config.onEnter?.(e);
-          if (config.once) io.disconnect();
-        } else {
-          config.onLeave?.(e);
-        }
-      }, { threshold: config.threshold ?? 0.1 });
-
-      io.observe(el);
-
-      // Optional: page progress (0..1), updated on scroll
-      // Use a local `fire()` so we can invoke once immediately without an Event arg.
-      let onScroll: ((this: Window, ev: Event) => any) | null = null;
-      if (config.onUpdate) {
-        const fire = () => {
-          const doc = document.documentElement;
-          const max = Math.max(1, doc.scrollHeight - doc.clientHeight);
-          const progress = Math.min(1, Math.max(0, window.scrollY / max));
-          config.onUpdate!(progress);
-        };
-        onScroll = function(this: Window, _ev: Event) { fire(); };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        fire(); // initial fire
-      }
-
-      return {
-        kill(){
-          io.disconnect();
-          if (onScroll) window.removeEventListener('scroll', onScroll);
-        }
-      };
-    }
-
-    // Expose facade on context so states can do: ctx.anim.timeline(), ctx.anim.scrollTrigger()
-    (usm.context as any).anim = { timeline, scrollTrigger };
+    
+    // Expose facade on context so states can do: ctx.anim.timeline()
+    (usm.context as any).anim = { timeline };
     return {};
   });
 }

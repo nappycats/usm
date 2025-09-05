@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8" />
+    <title data-title>USM Aviator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./styles.css" />
+    <style id="usm-prehide">
+      /* Hide all scenes until UI adapter kicks in, show only the loading scene */
+      [data-scene]{ display:none; }
+      [data-scene="loading"]{ display:block; }
+    </style>
+    </head>
+    <body>
+        <!-- HUD -->
+        <div id="hud" data-show="menu">
+            <div id="score">0</div>
+            <div id="level">Level 1</div>
+            <div id="hint"></div>
+        </div>
+
+        <!-- scenes (menu/gameover) -->
+        <main>
+            
+            <section data-scene="loading" class="loading">
+                <!-- <img src="./assets/images/nc-logo.png" alt="NAPPY CAT" /> -->
+                <h3 id="author">NAPPY CAT</h3>    
+                <div id="progress">
+                    <div class="fill"></div>
+                    <div class="label">0%</div>
+                </div>
+                <div id="loading-hint"></div>
+                <div id="hint" class="hint">sss/div>
+            </section>
+
+            <section data-scene="menu">
+                <h1 id="title">THE AVIATOR</h1>
+                <button id="btnPlay">Play</button>
+            </section>
+
+            <section data-scene="gameover" style="display:none">
+            <h2>Game Over</h2>
+            <div id="finalScore"></div>
+            <button id="btnRetry">Retry</button>
+            </section>
+        </main>
+
+        <!-- USM + adapters (adjust paths to your dist) -->
+        <!-- ESM-only: USM + adapters are imported inside ./main.js -->
+
+        <!-- Game files -->
+        <script type="module" src="./main.js"></script>
+    </body>
+</html>

@@ -14,9 +14,39 @@
   </nav>
 
   <main>
-    <section data-show="home"><h1>Home</h1><p id="greet"></p></section>
-    <section data-show="about"><h1>About</h1><p  class="about">USM adapter-first demo.</p></section>
-    <section data-show="settings"><h1>Settings</h1><p class="settings">Press 1/2/3 to switch pages.</p></section>
+    <section data-show="home">
+      <h1>Home</h1>
+      <p id="greet"></p>
+      <p id="title"></p>
+      <p id="score"></p>
+      <p id="status"></p>
+
+      <ul id="left">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+      </ul>
+    </section>
+    <section data-show="about">
+      <h1>About</h1>
+      <p  class="about">USM adapter-first demo.</p>
+      <!-- Draggable window -->
+      <div id="profiler" class="usm-window" style="left: 20px; top: 20px;">
+        <div class="titlebar">Profiler</div>
+        <div class="content">Hello!</div>
+      </div>
+    </section>
+    <section data-show="settings">
+      <h1>Settings</h1>
+      <p class="settings">Press 1/2/3 to switch pages.</p>
+            <!-- Dialog -->
+      <div id="settingsDialog" class="usm-dialog" style="display:block">
+        <div class="titlebar">Settings</div>
+        <div class="content">
+          <button onclick="m.context.ui.widgets.closeDialog()">Close</button>
+        </div>
+      </div>
+    </section>
   </main>
 
   <script src="../../dist/usm.global.js"></script>
